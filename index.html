@@ -1,52 +1,193 @@
-<!DOCTYPE html>
-<!-- saved from url=(0057)https://cdn.getimg.net/npc/2020/file/page/0327/index.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.02,user-scalable=no">
-    <link rel="icon" href="https://www.gcqweb.cn/wp-content/uploads/2022/06/favo.gif"><!--网站图标-->
-    <title>网站公告 - gcqweb.cn</title>
-  
-<!--
-	版本：1.0
-	整理：gcqweb.cn
-	原文：https://www.gcqweb.cn/stop.html
--->
+<html>
 
-  </head><body>
-    <div id="content">
-      <div id="main-content" class="wrap doc-content">
-        <div class="letter">
-          <h1>博客公告</h1>
-          <p>网站改版中，择日相聚，定会要你好看！</p>
-          <p>具体开放日期敬请期待！</p>
-          <p style="text-align: center;">赠汪伦</p>
-          <p style="text-align: center;">唐代：李白</p>
-          <p style="text-align: center;">李白乘舟将欲行，忽闻岸上踏歌声。</p>
-          <p style="text-align: center;">桃花潭水深千尺，不及汪伦送我情。</p>
-          <p class="right">gcqweb.cn</p>
-          <p class="right">2022年6月22日</p></div>
-        <div class="envelope"></div>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="landscape">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <title>怀旧游戏机-黒域博客52heiyu.com</title>
+
+    <meta name="keywords" content="fc在线玩,fc游戏在线玩,fc在线模拟器,nes在线模拟器,魂斗罗,超级玛丽,忍者龙剑传">
+    <meta name="description" content="可在手机电脑上在线玩fc游戏的网站,近乎完美的还原任天堂FC/NES原版ROM游戏的视频和声音。">
+    <link href="css/jsnes.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <audio style="display:none; height: 0" id="bg-music" preload="auto" src="bgm.mp3"></audio>
+    <!--<embed src="bgm.mp3" hidden="true" autostart="true"/>-->
+    <div class="main">
+        <div class="panel">
+            <div class="controller-area">
+                <div class="controller">
+                    <div id="controls-direction">
+                        <button role="BUTTON_UP" class="up joydirection" id="joystick_btn_up">up</button>
+                        <button role="BUTTON_RIGHT" class="right joydirection" id="joystick_btn_right">right</button>
+                        <button role="BUTTON_DOWN" class="down joydirection" id="joystick_btn_down">down</button>
+                        <button role="BUTTON_LEFT" class="left joydirection" id="joystick_btn_left">left</button>
+                    </div>
+                </div>
+                <div class="joy">I</div>
+                <div><a href="https://s.pc.qq.com/tousu/img/20210525/4656617_1621948077.jpg" target="_blank" class="readme">按键说明</a>
+                </div>
+            </div>
+            <div class="function-area">
+                <div class="screen">
+                    <div id="emulator" align="center" style="width:100%;/*height:100%*/"></div>
+                </div>
+                <div class="function">
+                    <button class="controls-center-select joybtn" id="joystick_btn_select"
+                        role="BUTTON_SELECT">Select</button>
+                    <button class="controls-center-start joybtn" id="joystick_btn_start"
+                        role="BUTTON_START">Pause</button>
+                </div>
+            </div>
+            <div class="action-area">
+                <div class="action">
+                    <div id="controls-fire">
+                        <button class="a joybtn" role="BUTTON_A" id="joystick_btn_A">A</button>
+                        <button class="b joybtn" role="BUTTON_B" id="joystick_btn_B">B</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sign">FAMILY <br> COMPUTER</div>
+        </div>
     </div>
+</body>
+<script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/dynamicaudio-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/nes.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/cpu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/keyboard.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/mappers.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/papu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/ppu.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/rom.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/ui.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="js/debug.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" charset="utf-8">
+    var _0xode = 'jsjiami.com.v6', _0x5292 = [_0xode, 'w4gRbcK6RcK0YcOyDkTDgQPCn1nDv8Onw4/DiMKFSyouw53CnMOTU2TCq01RHcKsBsKAwokCShoiXnV3', '5YeG6Zis5bOu', 'J8OCGWzDkVVXXcK6wpl8w5zCv8KhwrjDn8Odw4dq', '6a+L5pWT572I', 'w4bCiVVnPXwRw5LDqGRZwoc=', '5LqY5Zup6LCF5qOI', 'L8Oxw5rClcOswo0Tw50ODcK+wq5bw7hZO8Kdwo3DncKGw6TDncOxw5zDqcOHMA==', '5Zys5YSH5aai5omi', 'CcKjIBkfwpgFwrt3N8OAfcOmEg==', 'J8OCGWzDkUBDV8KwwpVzwpzCtcKlwqQ=', 'wqbCjsK0w4pew7LDpsOKwp5sBcOww67Cug==', '6LWF5b2P5oii5aKG', '54Ok5b+Z5LuC', 'w7cKClzDgMObXik0dlE=', 'wrjCt8OQHi7DoQ7DlsKzwpZmKcObwpt8SgvDsMKGADJIw7w=', 'CcKjIBkfw4Quw7w8esK4IsKtUxrCkMKETUrDicOvcsK9XE0Xw6slwpYsZ8O9wobCiMOGwoUlw74=', '5Lq855u656qB5a2T', 'BMKkw7bClnBnQzxaw4sxB8Og', '5byO6IGX56eG6b25wpM=', '5r6h6b+r5b++5om/', 'w7fDpmgAwonDqsOjw4XCmxHDrgE=', 'J8OCGWzDkUBPWMOzw55zw5fCqA==', '5rKL572S5pie6JqK', 'c8OkZhh5w7jDqcO9w7UbG8Onw43DkcOXw67DpsK4PsOew7nDvhDDuU5vw6dmGsK4NGc0LTQUw4M=', 'wrQfVBJT', 'BMObOUXCig==', 'w63DocKODm4=', 'w6jDvMK/NnQ=', 'CMOSwr3DpcKP', 'KcKpw787aQ==', 'w4bCtcOGwrRF', 'LcOGEmjCrg==', 'w4VfJlPCqg==', 'wogpXwhw', 'wqfChcK0Pj8=', '6LaS6YaC5pCn5oqX', 'ScKxLSDClA==', 'woLCk29Kwpc=', 'w783UcOAVcKQw4/DsCzDmz88w5w=', '6amo5oq85Zq7', 'w64uZ8KkAA==', 'U1FXHnYowp7Ch0DCqMO7OCk=', '5rKK57yn5pmW6JiI', 'wrXCnhoVJcOESB/DuC/DusKnAxDCksKdw4IGJsOUwq1lwpg=', 'wrjDq8KMw4LDtA==', '5YyL5oub6b+uVA==', 'wrQzwpozw47DuTHCiMOiR8OtwpbDsRHCgcOXw4RCIMKgwocPwq4=', 'CicVwqjDlA==', '5oCN6a6Y5Z6DWw==', 'Uik5wpzDsA==', 'EcKOw7AebA==', '5Lmn6ZSo5Yar5Zin', 'w5wJZcKjEA==', 'bRzCtcKyRw==', 'w783UcOAVcKow4nCpmfCmzQq', 'L8K1HWTCvw==', 'Aj4QwoDDmQ==', '5rK95rCB6b+hGw==', 'w4bCiVVnPWQUw5DDtCRSwpHDoQ==', 'w7/Dp1Ikw4o=', 'cMOZwrU7BA==', 'w4LClkfCtkE=', 'esOnwo01EQ==', 'R1bCpAlO', 'w5l7BWfCk0fDmQ==', 'wq/Cs8KzPFU/wpBfw5tEwqTCqnxybMObwp7Dr14nw657w59lJMKIOcKUCHZEWR3CrEIPDsKkG3UMw6M=', 'w6XDtcKZHmDDiULDonxuGVXCqMKqaMKj', 'PMO6w5PCo8K1wrIVw4YsA8Otwp1Lw7kcEQ==', 'wrPChMKqw40Ew43DrMONwoV/WcOq', 'UUxfGzwNwovCpEDDoMO0KDbDqQ==', 'aSnDqA/CtzLDrMKZJQ==', 'jZsVjIxCZQixamYWnri.bbcoYm.v6==']; (function (_0x364875, _0x90572, _0x306dda) { var _0x3b57a8 = function (_0x157067, _0x478c50, _0xfbe7bd, _0x672a6a, _0x483636) { _0x478c50 = _0x478c50 >> 0x8, _0x483636 = 'po'; var _0x381437 = 'shift', _0x35d1c0 = 'push'; if (_0x478c50 < _0x157067) { while (--_0x157067) { _0x672a6a = _0x364875[_0x381437](); if (_0x478c50 === _0x157067) { _0x478c50 = _0x672a6a; _0xfbe7bd = _0x364875[_0x483636 + 'p'](); } else if (_0x478c50 && _0xfbe7bd['replace'](/[ZVIxCZQxYWnrbbY=]/g, '') === _0x478c50) { _0x364875[_0x35d1c0](_0x672a6a); } } _0x364875[_0x35d1c0](_0x364875[_0x381437]()); } return 0x88c90; }; return _0x3b57a8(++_0x90572, _0x306dda) >> _0x90572 ^ _0x306dda; }(_0x5292, 0x1a9, 0x1a900)); var _0x3ade = function (_0x1c9b72, _0x3567da) { _0x1c9b72 = ~~'0x'['concat'](_0x1c9b72); var _0x51c613 = _0x5292[_0x1c9b72]; if (_0x3ade['yhzAfQ'] === undefined) { (function () { var _0x11b163 = typeof window !== 'undefined' ? window : typeof process === 'object' && typeof require === 'function' && typeof global === 'object' ? global : this; var _0x429780 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='; _0x11b163['atob'] || (_0x11b163['atob'] = function (_0x11bd79) { var _0x5154ab = String(_0x11bd79)['replace'](/=+$/, ''); for (var _0x347aaf = 0x0, _0x1b405b, _0x221c56, _0x4a6bef = 0x0, _0xe0c66a = ''; _0x221c56 = _0x5154ab['charAt'](_0x4a6bef++); ~_0x221c56 && (_0x1b405b = _0x347aaf % 0x4 ? _0x1b405b * 0x40 + _0x221c56 : _0x221c56, _0x347aaf++ % 0x4) ? _0xe0c66a += String['fromCharCode'](0xff & _0x1b405b >> (-0x2 * _0x347aaf & 0x6)) : 0x0) { _0x221c56 = _0x429780['indexOf'](_0x221c56); } return _0xe0c66a; }); }()); var _0x424943 = function (_0x2d74ac, _0x3567da) { var _0x2e09a6 = [], _0x414740 = 0x0, _0x5b82b9, _0x578882 = '', _0x3a2ee6 = ''; _0x2d74ac = atob(_0x2d74ac); for (var _0x2d9bd5 = 0x0, _0x33cd7b = _0x2d74ac['length']; _0x2d9bd5 < _0x33cd7b; _0x2d9bd5++) { _0x3a2ee6 += '%' + ('00' + _0x2d74ac['charCodeAt'](_0x2d9bd5)['toString'](0x10))['slice'](-0x2); } _0x2d74ac = decodeURIComponent(_0x3a2ee6); for (var _0x2773e4 = 0x0; _0x2773e4 < 0x100; _0x2773e4++) { _0x2e09a6[_0x2773e4] = _0x2773e4; } for (_0x2773e4 = 0x0; _0x2773e4 < 0x100; _0x2773e4++) { _0x414740 = (_0x414740 + _0x2e09a6[_0x2773e4] + _0x3567da['charCodeAt'](_0x2773e4 % _0x3567da['length'])) % 0x100; _0x5b82b9 = _0x2e09a6[_0x2773e4]; _0x2e09a6[_0x2773e4] = _0x2e09a6[_0x414740]; _0x2e09a6[_0x414740] = _0x5b82b9; } _0x2773e4 = 0x0; _0x414740 = 0x0; for (var _0x157473 = 0x0; _0x157473 < _0x2d74ac['length']; _0x157473++) { _0x2773e4 = (_0x2773e4 + 0x1) % 0x100; _0x414740 = (_0x414740 + _0x2e09a6[_0x2773e4]) % 0x100; _0x5b82b9 = _0x2e09a6[_0x2773e4]; _0x2e09a6[_0x2773e4] = _0x2e09a6[_0x414740]; _0x2e09a6[_0x414740] = _0x5b82b9; _0x578882 += String['fromCharCode'](_0x2d74ac['charCodeAt'](_0x157473) ^ _0x2e09a6[(_0x2e09a6[_0x2773e4] + _0x2e09a6[_0x414740]) % 0x100]); } return _0x578882; }; _0x3ade['BkyRUR'] = _0x424943; _0x3ade['AZUOcg'] = {}; _0x3ade['yhzAfQ'] = !![]; } var _0x196394 = _0x3ade['AZUOcg'][_0x1c9b72]; if (_0x196394 === undefined) { if (_0x3ade['jWwLbd'] === undefined) { _0x3ade['jWwLbd'] = !![]; } _0x51c613 = _0x3ade['BkyRUR'](_0x51c613, _0x3567da); _0x3ade['AZUOcg'][_0x1c9b72] = _0x51c613; } else { _0x51c613 = _0x196394; } return _0x51c613; }; var nes; $(function () { var _0x3c4221 = { 'LuxqQ': function (_0xa39d00, _0x54ff22) { return _0xa39d00(_0x54ff22); }, 'QvMZt': _0x3ade('0', 'JN#f'), 'ipsUx': '超级玛丽', 'kSGQC': _0x3ade('1', 'tTmm'), 'lmBmb': _0x3ade('2', 'Z#*w'), 'TOEVb': _0x3ade('3', 'yfQX'), 'ZJYgL': _0x3ade('4', 'hd5K'), 'FWtGL': _0x3ade('5', '5)jI'), 'BjJzG': _0x3ade('6', 'xgGc'), 'xkfwP': _0x3ade('7', 'pGWU'), 'pKBPk': _0x3ade('8', 'JN#f'), 'pCskr': _0x3ade('9', 'hKm('), 'HRGbz': '雪人兄弟', 'zYjqE': _0x3ade('a', 'yfQX'), 'wpwTh': _0x3ade('b', 'nU2o'), 'Havwe': _0x3ade('c', 'pKnG'), 'AvCDh': _0x3ade('d', '&xSc'), 'TPgmj': _0x3ade('e', 'Sl^]'), 'LZeMl': _0x3ade('f', 'QSjz'), 'DufjO': _0x3ade('10', 'hKm('), 'qAldK': _0x3ade('11', 'xgGc'), 'JitCN': 'roms/3.nes', 'JewSa': '洛克人1', 'bmVBI': 'roms/lkr.nes', 'fwejz': _0x3ade('12', 'AXKV'), 'ResOl': _0x3ade('13', 'mZcc'), 'sUeMi': _0x3ade('14', 'm4f1'), 'yXiLF': _0x3ade('15', 'H%wy'), 'znWWl': '西游记1', 'GwMwO': _0x3ade('16', 'yfQX'), 'XlMxM': _0x3ade('17', 'XV%p'), 'ExjwR': 'roms/Lifeforce\x20(U).nes', 'MIuyZ': '淘金者', 'USFDD': _0x3ade('18', 'M7uQ') }; nes = new JSNES({ 'ui': _0x3c4221[_0x3ade('19', '7mqY')]($, _0x3c4221[_0x3ade('1a', 'yfQX')])['JSNESUI']({ '经典': [[_0x3c4221[_0x3ade('1b', 'FbqG')], _0x3c4221['kSGQC']], [_0x3c4221[_0x3ade('1c', 'FbqG')], _0x3c4221[_0x3ade('1d', 'OVI*')]], [_0x3c4221[_0x3ade('1e', '9Q1O')], _0x3c4221[_0x3ade('1f', '9Op3')]], [_0x3c4221['BjJzG'], _0x3c4221[_0x3ade('20', 'yfQX')]], [_0x3c4221[_0x3ade('21', 'xgGc')], _0x3c4221[_0x3ade('22', '7mqY')]], [_0x3c4221['HRGbz'], _0x3c4221[_0x3ade('23', 'XrRW')]], [_0x3ade('24', 'xWfm'), _0x3c4221[_0x3ade('25', 'q9Op')]], [_0x3c4221[_0x3ade('26', 'QYWQ')], _0x3ade('27', '8uz]')], [_0x3c4221['AvCDh'], 'roms/zhadan.nes'], [_0x3ade('28', 'eKsC'), _0x3c4221[_0x3ade('29', 'tTmm')]], ['影子传说', _0x3ade('2a', 'pKnG')], [_0x3ade('2b', '*I90'), _0x3c4221['LZeMl']], ['脱狱', _0x3ade('2c', 'OOWj')], ['功夫', _0x3c4221[_0x3ade('2d', 'yhTW')]], [_0x3ade('2e', 'OOWj'), _0x3ade('2f', 'V0*&')], [_0x3c4221[_0x3ade('30', 'O74X')], _0x3c4221['JitCN']], [_0x3ade('31', 'hKm('), 'roms/emc.nes'], [_0x3c4221[_0x3ade('32', 'xWfm')], _0x3c4221[_0x3ade('33', '9Q1O')]], [_0x3ade('34', 'XrRW'), _0x3c4221[_0x3ade('35', 'tTmm')]], [_0x3c4221[_0x3ade('36', 'F&h8')], _0x3ade('37', '8uz]')], [_0x3c4221[_0x3ade('38', '&xSc')], _0x3c4221[_0x3ade('39', 'O74X')]], [_0x3ade('3a', '&xSc'), _0x3ade('3b', '5)jI')], [_0x3c4221[_0x3ade('3c', 'H%wy')], _0x3c4221[_0x3ade('3d', '8H!K')]], [_0x3c4221[_0x3ade('3e', 'vNRr')], _0x3c4221['ExjwR']], [_0x3c4221[_0x3ade('3f', '8H!K')], _0x3c4221[_0x3ade('40', 'XV%p')]]], '黑域博客：http://xiaobawang.52heiyu.com': [], '本站仅供用于演示，请勿用于商业用途！！！': [] }) }); nes['ui'][_0x3ade('41', 'xgGc')](_0x3ade('42', 'XrRW')); }); document['body'][_0x3ade('43', 'FbqG')]('touchmove', function (_0x490cf5) { _0x490cf5['preventDefault'](); }, ![]); document[_0x3ade('44', 'pGWU')](_0x3ade('45', 'nU2o'), function (_0xd9fbc0) { _0xd9fbc0[_0x3ade('46', 'pKnG')](); });; _0xode = 'jsjiami.com.v6';
+</script> 
+<!--[if IE]>
+    <script type="text/vbscript" src="source/jsnes-ie-hacks.vbscript"></script>
+<![endif]-->
+<script>
+    //音乐自动播放
+    $(document).ready(function () {
+        autoPlayMusic();
+        audioAutoPlay();
+    });
+    function audioAutoPlay() {
+        var audio = document.getElementById('bg-music');
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    // 音乐播放
+    function autoPlayMusic() {
+        // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+        function musicInBrowserHandler() {
+            musicPlay(true);
+            document.body.removeEventListener('touchstart', musicInBrowserHandler);
+        }
+        document.body.addEventListener('touchstart', musicInBrowserHandler);
+        // 自动播放音乐效果，解决微信自动播放问题
+        function musicInWeixinHandler() {
+            musicPlay(true);
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                musicPlay(true);
+            }, false);
+            document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+        }
+        document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+    }
+    function musicPlay(isPlay) {
+        var media = document.querySelector('#bg-music');
+        if (isPlay && media.paused) {
+            media.play();
+        }
+        if (!isPlay && !media.paused) {
+            media.pause();
+        }
+    }
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 
-    <style type="text/css">
-    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:400}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:400}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:text-top}sub{vertical-align:text-bottom}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit}textarea{resize:none}legend{color:#000}a{color:#0068b7;outline:none;text-decoration:none}body{background:#fff;color:#333;font:12px/1.5 tahoma,arial}html,body{height:100%}input::-ms-clear{display:none}:focus{outline:0}.clearfix{}.err9999Box{height:195px;width:320px}.err9999{font-size:16px;height:127px;margin:0 auto;padding-top:30px;width:218px}.err9999Tip{color:#000;font-weight:400;margin:0 0 0 10px}.letter{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAGCAIAAACq3OKOAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoxNzNjYjQ4My0xNDY1LTQ1NzQtYjc2NS1iY2E3NDRmZTI3MjMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RUEwMzg2RjQ4RDNEMTFFNjk5QkRFOTRDRUQ5RERBQjUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RUEwMzg2RjM4RDNEMTFFNjk5QkRFOTRDRUQ5RERBQjUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpiNDAxYTc3Zi03OTRmLTQ3NzEtOGRhOC1iNTk4ZmRlMTBjNTYiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDoyYTA1MWMyMy1kMjcwLTExNzktYjA2NS1lNDVlZGE4OWFiMDMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz62qq5JAAAAiElEQVR42mKcdvgLAwZg/P/f4eI6qbf30MT/MzIe1A9mYsAGdB+cwNQABFcVLJ8KK2LRI/32vs79o5jiz4SVLilaARnoenh+fLK6ugXoNjTxrxz8x7S9gW5D18Py74/dpY1sv3+gafjLxHJIz+8nKweEi6LH5OZewc8vMF11Rt3lHa8EnAsQYADH8y5ADqrQsAAAAABJRU5ErkJggg==") repeat-x #fff;border-radius:5px;border:1px solid #c2c2c2\9;border-size:0 1px\9;-webkit-box-shadow:0 0 10px #c2c2c2;-moz-box-shadow:0 0 10px #c2c2c2;-ms-box-shadow:0 0 10px #c2c2c2;box-shadow:0 0 10px #c2c2c2;margin:57px auto 0;overflow:hidden;padding:0 84px 271px;width:651px}q:before,q:after{content:''}
-    .clearfix:before,.clearfix:after{content:"";display:table}
-    .clearfix:after{clear:both}.header .container{padding-left:10px}#content,#main-content{margin:0;min-height:100%;overflow:auto;padding:0;position:relative;width:100%}#main-content{background:url(https://s1.ax1x.com/2020/03/21/8RFi6g.png) repeat-x 0 bottom}#main-content p{font-size:18px;margin:10px 0}#main-content h2{font-size:20px;margin:30px 0 10px}#main-content h3{font-size:18px;margin:10px 0;padding:0}#main-content ul,#main-content li{font-size:18px;list-style:initial;margin:10px 0 10px 18px;text-indent:0}#content .envelope{background:url(https://s1.ax1x.com/2020/03/21/8RFFXQ.png) no-repeat center 0;bottom:0;height:279px;left:50%;margin-left:-460px;position:absolute;width:918px}#content .letter h1{color:#2980ee;font-size:26px;font-weight:700;height:26px;line-height:26px;margin:51px auto 37px;padding:0;text-align:center}#main-content p.right{text-align:right}@media screen and (max-width:920px){html{font-size:12px}}@media screen and (max-width:384px){html{font-size:11px}}@media screen and (max-width:352px){html{font-size:10px}}@media screen and (max-width:320px){html{font-size:10px}}@media screen and (max-width:920px){@charset "utf-8";html,body,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,blockquote,pre,form,input,textarea,fieldset,table,th,td,header,footer,nav,article,section{margin:0;padding:0}body,button,input,select,textarea{font:normal 100% tahoma,arial,"Microsoft YaHei",SimSun,sans-serif}ul,ol,li{list-style:none}a{color:#000;text-decoration:none}.header{background:#3083eb}.header,.header .container{height:4.0rem}.logo{background:url(https://p.ssl.qhimg.com/t018f016afc48e53dea.png) no-repeat 0 0;background-size:auto 100%;float:left;height:1.4rem;margin-top:1.3rem;overflow:hidden;text-indent:-2000px;width:8.0rem}.main{margin:0 auto}.layer-1 ul{margin:0 0 0 2rem}.clearfix:after{clear:both;content:"\20";display:block;height:0;visibility:hidden}#content{text-align:left;width:100%;margin:0 auto 2rem}#main-content{float:left;padding:0 2rem}#content h1{color:#555;font-weight:400;font-family:'微软雅黑';font-size:2.0rem;padding:2rem 0;text-align:center}#main-content h3,#main-content h4{font-size:1.6rem}#main-content h3,#main-content h6,#main-content h4{color:#777;font-weight:700;padding-bottom:0.9rem;padding-top:3rem}#main-content h6,#main-content p{font-size:1.2rem}#main-content p,#main-content p,#main-content li{color:#777}#main-content p,#main-content li{font-size:1.2rem;line-height:2.4rem}#main-content .sub-paragraph,#main-content .three-paragraph{padding-left:2.5rem}#main-content .welcome-paragraph{text-indent:0}#footer,#footer p{color:#CDCDCD;line-height:2.2rem;text-align:center}.letter{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAJCAIAAACwvetYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDoyZmIyMDI4Zi0wYmY5LTQ2MDMtODFkYS04NGUxNjc2ZjllMDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NzA1OUMzMDg4RDhEMTFFNjk5QkRFOTRDRUQ5RERBQjUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NzA1OUMzMDc4RDhEMTFFNjk5QkRFOTRDRUQ5RERBQjUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpjNTMyNmQ3Yy02NjEyLTRkNWYtYmE4MS02NmVjYWIzNDAwNjYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MmZiMjAyOGYtMGJmOS00NjAzLTgxZGEtODRlMTY3NmY5ZTA3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hSx8FwAAARdJREFUeNpinH74y38GCPjPyMAIosAcledXzK9tZ2Rk+P8fKACWAdNA8p6ULhNMD0wrmBT+8srkxm4olxFkFhT/Z3jHK35K3YWFEVUDELD9/m57aSPzvz/Iov/B+Bcrx2Fd/39MLExwKUZGxv9Ad/7/b311K/f3DwxQKxCm/mdkPKbt84WTH6ieCeoKqApGnQfHpd7eh7oORYrhqqLVU2FFCJvlP5JLpN/d171/jAFm0X+4uxkZngkpXlKwhNvNBGfx/PhodWULI1wtI4xkZPjKwQ903n9GRmiAM8K0sfz/Y3d5E9vvH4xoQfSf4S8T6yFdv5+sHAir/0P8xsBgcmOv4KcX4FhCyEIsPKPm/I5XAhYRUAAQYAAnIGMx5Ftc0gAAAABJRU5ErkJggg==") repeat-x #fff;background-size:auto .3rem;border-radius:5px;-webkit-box-shadow:0 0 10px #c2c2c2;-moz-box-shadow:0 0 10px #c2c2c2;-ms-box-shadow:0 0 10px #c2c2c2;box-shadow:0 0 10px #c2c2c2;margin:1.8rem auto 0;overflow:hidden;padding:0 1.8rem 10rem;text-overflow:ellipsis;width:28.5rem;word-wrap:break-word}.header .container{padding-left:1rem}#content,#main-content{background:none;margin:0;min-height:100%;overflow:auto;padding:0;position:relative;width:100%}#footer a{margin:0 1.2rem}#main-content p{font-size:1.6rem;margin:1rem 0}#main-content h2{color:#777;font-size:1.8rem;margin:1rem 0}#main-content h3{font-size:1.6rem;margin:1rem 0;padding:0}#main-content ul,#main-content li{font-size:1.6rem;list-style:initial;margin:1rem 1rem 1.8rem;text-indent:0}#content .envelope{background:url(https://s1.ax1x.com/2020/03/21/8Rktbj.png) no-repeat center 0;background-size:34.8rem auto;bottom:0;height:11.6rem;left:50%;margin-left:-17.4rem;position:absolute;width:34.8rem}#content .letter h1{font-size:1.6rem;height:1.5rem;line-height:1.5rem;margin:3.3rem auto;padding:0;width:17rem}.wrap{margin:0 auto;width:960px}.header{background:#3083eb;height:68px}.container{height:100%;margin:0 auto;position:relative;width:960px}.logo{background: url(https://www.mom1.cn/wp-content/uploads/2019/09/20190925122416mom1-cn94.png);float: left;height: 50px;margin-top: 10px;overflow: hidden;text-indent: -2000px;width: 200px;}.gg{color:#d7e44c;float:left;font-size:16px;line-height:18px}.navbar{margin-top:24px;white-space:nowrap;width:674px}.navbar,.nav{float:right}.footer{margin:40px 0 66px;padding:25px 0;position:relative;z-index:3}.follow-us{height:32px;position:absolute;right:25px;top:25px;width:112px}.nav ul{overflow:hidden}
-    .nav li{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAANCAIAAADntZOlAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RENBNkVDNzkyMjA3MTFFNEIxQ0Y5MjVBRTdEMUQwRjgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RENBNkVDN0EyMjA3MTFFNEIxQ0Y5MjVBRTdEMUQwRjgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEQ0E2RUM3NzIyMDcxMUU0QjFDRjkyNUFFN0QxRDBGOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEQ0E2RUM3ODIyMDcxMUU0QjFDRjkyNUFFN0QxRDBGOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnSyMNwAAAAZSURBVHjaYphx8CvTjEPfmDLsuIilAQIMADkhFGdS6skAAAAAAElFTkSuQmCC") no-repeat 0 50%;float:left;height:18px;line-height:18px;margin:0 0 0 -1px;padding:0 18px}
-    .nav a{color:#fff;font-size:16px}.nav strong{color:#ff0;font-weight:400}
-    .menu li{border-left:4px solid #fff;height:54px}
-    .menu a{color:#3e76a3;display:block;font-family:"Microsoft Yahei";font-size:16px;padding:15px 0}
-    .footer strong{font-weight:400;font-family:arial}.layout .aside{float:left;margin:0 0 0 -100%;width:170px}
-    .layout .main{float:left;width:100%}.layout .main-wrap{margin:0 0 0 180px}
-    .layout .content{border-left:1px solid #e5e5e5;font-size:15px;font-family:"Microsoft YaHei";padding-left:40px}.header .container{height:68px}
-    .nav .gg{color:#d7e44c}.menu .current{background:#e7f5ff;border-color:#2684c2}.menu .icon-android{background-position:0 0}.menu .icon-bbs{background-position:0 -27px}.menu .icon-ios,.menu .icon-mac{background-position:0 -49px}.menu .icon-level{background-position:0 -76px}.menu .icon-other{background-position:0 -98px}.menu .icon-question{background-position:0 -123px}.menu .icon-web{background-position:0 -148px}.menu .icon-windows{background-position:0 -176px}.footer .links{margin-bottom:16px;overflow:hidden}
-    .footer .copyright{color:#cdcdcd;font-family:arial}@charset "utf-8";html,body,div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,blockquote,pre,form,input,textarea,fieldset,table,th,td,header,footer,nav,article,section{margin:0;padding:0}body,button,input,select,textarea{font:12px/1.5 tahoma,arial,宋体}body{background:#fff;color:#333}ul,ol{list-style:none}img{border:none;vertical-align:top}header,footer,nav,article,section{display:block}h1{font-size:18px}h2{font-size:16px}h3{font-size:14px}h4,h5,h6{font-size:100%}a{color:#0068b7;outline:none}a,a:hover{text-decoration:none}table{border-collapse:collapse;border-spacing:0}:focus{outline:0}.f_l{float:left}.f_r{float:right}.c_b,.clear{clear:both}.clear{font-size:0;height:0;overflow:hidden}.clearfix{zoom:1}.f_w_b{font-weight:700}.f_w_n{font-weight:400}.black{color:#000}.red{color:red}.gray{color:#999}.t_a_l{text-align:left}.t_a_c{text-align:center}.t_a_r{text-align:right}.t_d_u{text-decoration:underline}.fs_12{font-size:12px}.fs_14{font-size:14px}.white{color:#fff}.err9999Box{height:195px;margin:0 auto;width:320px}.err9999{font-size:16px;height:127px;margin:0 auto;padding-top:30px;width:218px}.err9999Tip{color:#000;font-weight:400;margin-left:10px}.err9995Box{height:130px;margin:0 auto;width:340px}.err9995{font-size:16px;height:127px;margin:0 auto;padding-top:20px;width:320px}.err9995Tip{color:#000;font-weight:400;margin-left:10px}.err9995Link{margin:0 auto;padding:20px 0;text-align:center}.hasFontSmoothing-false body,.hasFontSmoothing-false button,.hasFontSmoothing-false input,.hasFontSmoothing-false select,.hasFontSmoothing-false textarea{font-family:SimSun,sans-serif}* html .clearfix{height:1%}.err9995Link a{background:#3e94fe;border-color:#3984e5;border-radius:2px;border-width:1px;border-style:solid;color:#fff;cursor:pointer;font-size:12px;height:16px;min-width:47px;overflow:hidden;padding:6px 14px;text-align:center;width:50px}
-    .clearfix:after{clear:both;content:"\20";display:block;height:0;visibility:hidden}}
+<script>
+    var url = location.href;
+
+    $.ajax({
+        type: "get",
+        url: "http://fc.my71.top/jssdk.php?url=" + url,
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "success_jsonpCallback",
+        success: function (data) {
+
+            wx.config({
+                debug: false,
+                appId: data.appId,
+                timestamp: data.timestamp,
+                nonceStr: data.nonceStr,
+                signature: data.signature,
+                jsApiList: [
+                    'onMenuShareTimeline',//
+                    'onMenuShareAppMessage',
+                    'onMenuShareQQ',
+                    'onMenuShareWeibo',
+                    'onMenuShareQZone'
+
+                ]
+            });
+        },
+        error: function (data) {
+            alert("连接失败！");
+        }
+    });
+
+    wx.ready(function () {
+        var shareData = {
+            title: '在线小霸王游戏机，1秒找回童年',
+            desc: '超级玛丽，魂斗罗，淘金者，冒险岛！80,90一代人的回忆',
+            link: url,
+            imgUrl: 'http://fc.ziyuanwu.com/logo1.png'
+        };
+
+        wx.onMenuShareAppMessage({
+            title: '少年未来可期！', // 分享标题
+            desc: '这个暑假，当少年遇上高尔夫，让自信与优秀成为一种习惯，倍享成长快乐！', // 分享描述
+            link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: "http://fc.ziyuanwu.com/logo1.png", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // alert("成功")
+
+            }
+        });
 
 
-    </style>
-  
+        wx.onMenuShareAppMessage(shareData);//分享给好友
+        wx.onMenuShareTimeline(shareData);//分享到朋友圈
+        wx.onMenuShareQQ(shareData);//分享给手机QQ
+        wx.onMenuShareWeibo(shareData);//分享腾讯微博
+        wx.onMenuShareQZone(shareData);//分享到QQ空间
 
-</body></html>
+
+
+    });
+    wx.error(function (res) {
+        //alert(res.errMsg);//错误提示
+
+    });
+</script>
+
+</html>
